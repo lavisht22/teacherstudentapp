@@ -9,7 +9,7 @@ import Sidebar from './sidebar';
 import AppHeader from './Header';
 import { fetchUserProfile, fetchRoute } from '../actions/user';
 
-import courseDetails from '../pages/teacher/LectureDetails';
+import TeacherDashboard from '../pages/teacher/Dashboard';
 
 const { Header, Footer, Content } = Layout;
 
@@ -19,6 +19,7 @@ class MainLayout extends Component {
   }
 
   render() {
+    console.log(this.props.role);
     return (
       <div className="App">
         <Layout style={{ minHeight: '100vh' }}>
@@ -28,12 +29,20 @@ class MainLayout extends Component {
               <AppHeader />
             </Header>
             <Content className="App-body">
-              <Switch>
-                <Route exact component={Home} path="/" />
-                <Route component={About} path="/about" />
-                <Route component={courseDetails} path="/courseDetails" />
-                <Redirect to="/404" />
-              </Switch>
+              {this.props.role === 'teacher' ? (
+                <Switch>
+                  <Route exact component={TeacherDashboard} path="/" />
+                  <Route component={About} path="/about" />
+                  <Redirect to="/404" />
+                </Switch>
+              ) : (
+                <Switch>
+                  <Route exact component={Home} path="/" />
+                  <Route component={About} path="/about" />
+
+                  <Redirect to="/404" />
+                </Switch>
+              )}
             </Content>
             <Footer>footer</Footer>
           </Layout>
@@ -42,6 +51,10 @@ class MainLayout extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  role: state.user.role,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -53,6 +66,6 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(MainLayout);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import auth0 from 'auth0-js';
 
 const CONFIG = {
-  SERVICE_URL_PREFIX: '/absurd/api/v1',
+  SERVICE_URL_PREFIX: '/tsfa/api/v1',
 };
 
 function generateHeaders() {
