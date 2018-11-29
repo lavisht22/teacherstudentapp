@@ -1,0 +1,42 @@
+.courseDetailsContainer {
+    padding: 2rem;
+}
+
+
+.detailsHeader {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+    display: flex;
+    flex-direction: 'row';
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detailsHeaderInner {
+    flex: 1
+}
+
+.lectureCount {
+    text-align: right;
+}
+
+.listItem {
+    text-align: left;
+}
+
+h2 {
+    text-align: left;
+}   
+
+h3 {
+    text-align: left;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}

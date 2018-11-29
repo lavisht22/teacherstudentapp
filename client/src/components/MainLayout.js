@@ -9,6 +9,8 @@ import Sidebar from './sidebar';
 import AppHeader from './Header';
 import { fetchUserProfile, fetchRoute } from '../actions/user';
 
+import courseDetails from '../pages/teacher/LectureDetails';
+
 const { Header, Footer, Content } = Layout;
 
 class MainLayout extends Component {
@@ -29,6 +31,7 @@ class MainLayout extends Component {
               <Switch>
                 <Route exact component={Home} path="/" />
                 <Route component={About} path="/about" />
+                <Route component={courseDetails} path="/courseDetails" />
                 <Redirect to="/404" />
               </Switch>
             </Content>
@@ -49,4 +52,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(MainLayout);
+export default connect(
+  null,
+  mapDispatchToProps
+)(MainLayout);
