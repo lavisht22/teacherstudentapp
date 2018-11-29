@@ -6,6 +6,8 @@ const router = express.Router();
 const userRoutes = require('./user');
 const appRoutes = require('./app');
 
+const adminRoutes = require('./admin/index');
+
 router.get('/', (req, res) => {
   res.json({ title: 'Lavish Thakkar' });
 });
@@ -23,5 +25,6 @@ router.use((err, req, res, next) => {
 });
 
 router.use('/user', userRoutes);
+router.use('/admin', adminRoutes);
 
 module.exports = router;

@@ -37,20 +37,18 @@ function getAccessToken() {
       },
       { headers: { 'Content-Type': 'application/json' } }
     )
-    .then(function(response) {
-      return response.data.access_token;
-    });
+    .then(response => response.data.access_token);
 }
 
 /**
  * Function to create a new user in Auth0
  * @param {Object} userObject User Object with relevant user data.
+ * @param {String} role Role of the user
  * @returns {Promise} User Object received from Auth0
  */
-function createNewUser(userObject) {
+function createNewUser(userObject, role) {
   return getAccessToken()
-    .then(function(accessToken) {
-      console.log('got access');
+    .then(accessToken => {
       return axios.post(
         `https://${CONFIG.auth0.domain}/api/v2/users`,
         {
@@ -61,6 +59,7 @@ function createNewUser(userObject) {
             email: userObject.email,
             phone: userObject.phone,
             name: userObject.name,
+            role: role,
           },
           email_verified: false,
           verify_email: false,
@@ -74,10 +73,8 @@ function createNewUser(userObject) {
         }
       );
     })
-    .then(function(response) {
-      return response.data;
-    })
-    .catch(function(error) {
+    .then(response => response.data)
+    .catch(error => {
       throw error.response.data.message;
     });
 }
