@@ -1,4 +1,5 @@
-/**CONSTANTS FILE
+/**
+ * CONSTANTS FILE
  * This file contains all the constants that are used across application
  */
 
@@ -7,5 +8,12 @@ module.exports = {
     INVALID_PAYLOAD: 'invalid_payload',
     DB_ERROR: 'db_error',
     SERVICE_ERROR: 'service_error',
+  },
+  USER: {
+    ROLE: {
+      TEACHER: 'teacher',
+      STUDENT: 'student',
+      ADMIN: 'admin',
+    },
   },
 };
