@@ -1,5 +1,6 @@
 const intialState = {
   courses: [],
+  course_details: {},
 };
 
 export default (state = intialState, action) => {
@@ -8,6 +9,12 @@ export default (state = intialState, action) => {
       return {
         ...state,
         courses: action.payload.data,
+      };
+
+    case 'TEACHER_FETCH_COURSE_DETAILS_FULFILLED':
+      return {
+        ...state,
+        course_details: action.payload.data,
       };
 
     default:

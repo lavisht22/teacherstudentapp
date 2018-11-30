@@ -6,3 +6,10 @@ export const getAllCourses = () => {
     payload: getData('/teacher/course'),
   };
 };
+
+export const getCourseDetails = courseId => {
+  return {
+    type: 'TEACHER_FETCH_COURSE_DETAILS',
+    payload: getData(`/teacher/course/${courseId}`),
+  };
+};

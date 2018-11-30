@@ -10,6 +10,8 @@ import AppHeader from './Header';
 import { fetchUserProfile, fetchRoute } from '../actions/user';
 
 import TeacherDashboard from '../pages/teacher/Dashboard';
+import TeacherCourseDetails from '../pages/teacher/CourseDetails';
+import LectureDetails from '../pages/teacher/LectureDetails';
 
 const { Header, Footer, Content } = Layout;
 
@@ -32,7 +34,8 @@ class MainLayout extends Component {
               {this.props.role === 'teacher' ? (
                 <Switch>
                   <Route exact component={TeacherDashboard} path="/" />
-                  <Route component={About} path="/about" />
+                  <Route component={TeacherCourseDetails} path="/course/:id" />
+                  <Route component={LectureDetails} path="/lecture/:id" />
                   <Redirect to="/404" />
                 </Switch>
               ) : (
